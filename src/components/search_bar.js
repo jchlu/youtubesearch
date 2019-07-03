@@ -1,23 +1,18 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
-export default class extends Component {
-  constructor (props) {
-    super (props)
-    this.state = {
-      term: ''
-    }
+export default ({ onSearchTermChange }) => {
+  const [term, setTerm] = useState('')
+
+  const onInputChange = searchTerm => {
+    setTerm(searchTerm)
+    onSearchTermChange(term)
   }
 
-  onInputChange (term) {
-    this.setState({ term })
-    this.props.onSearchTermChange(term)
-  }
-
-  render = () => (
+  return (
     <div className='search-bar'>
       <input
-        value={this.state.term}
-        onChange={event => this.onInputChange(event.target.value)}
+        value={term}
+        onChange={event => onInputChange(event.target.value)}
       />
     </div>
   )

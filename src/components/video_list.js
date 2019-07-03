@@ -1,9 +1,9 @@
 import React from 'react'
 import VideoListItem from './video_list_item'
-export default props => {
-  const videoItems = props.videos.map(video => (
+export default ({ videos, onVideoSelect }) => {
+  const videoItems = videos.map(video => (
     <VideoListItem
-      onVideoSelect={props.onVideoSelect}
+      onVideoSelect={onVideoSelect}
       key={video.etag}
       video={video}
     />
